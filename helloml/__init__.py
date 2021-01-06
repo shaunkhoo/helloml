@@ -2,6 +2,7 @@ import pandas as pd
 from pandas_profiling import ProfileReport
 from pathlib import Path
 
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -106,17 +107,22 @@ class HelloDataset():
         print(
             f'Created new feature "{new_feat}" by multiplying features {feature_list}.')
 
-    def set_target_feature(self, target_feature):
+    def set_target_feature(self, target_feature, scale=True):
         '''
         param target_feature: name of column to predict.
-        All other columns will be used for prediction.
+        All other columns will be normalised and used for prediction.
         '''
         self.X = self.df.drop(target_feature, axis=1)
         self.Y = self.df[target_feature]
+        
         print(f'Target feature set to {target_feature}.')
         print(f'Features used for prediction:')
         for i in list(self.X.columns):
             print(f'- {i}')
+
+        if scale:
+            scaler = StandardScaler()
+            self.X = scaler.fit_transform(self.X)
 
 
 # ML models
@@ -128,7 +134,9 @@ class HelloModel():
         KNeighborsClassifier(),
     ]))
     req_dict = dict(zip(names, [
-        ['Requires numerical data',]
+        ['Requires numerical features',],
+        ['Requires numerical features', 'Cannot process missing values'],
+        [],
     ]))
 
     def __init__(self, model_name):
@@ -145,6 +153,6 @@ class HelloModel():
         self.model.fit(hellodata.X, hellodata.Y)
         print('Done.')
 
-    def evaluate(self, hellodata):
+    def test(self, hellodata):
         score = self.model.score(hellodata.X, hellodata.Y)
         print(f'Accuracy: {round(score*100, 1)}% of your predictions were correct.')
