@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: helloml-sideqst
+Version: 0.0.1
+Summary: Machine Learning, simplified.
+Home-page: https://github.com/sideqst/helloml
+Author: Christine Yong
+Author-email: ycwchristine@gmail.com
+License: UNKNOWN
+Description: # helloml
+        Simple ML for beginners.
+        
+        ## Dependencies
+        ```
+        python>=3.8
+        ```
+        
+        Install dependencies by running:
+        ```
+        pip install -r requirements.txt
+        ```
+        
+        ## How to Use: Predicting survivors on the Titanic shipwreck
+        
+        Run `titanic_demo.ipynb`.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
