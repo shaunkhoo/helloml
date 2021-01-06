@@ -13,4 +13,4 @@ pip install -r requirements.txt
 
 ## How to Use: Predicting survivors on the Titanic shipwreck
 
-Run `titanic_test.ipynb`.
+Run `titanic_demo.ipynb`.
