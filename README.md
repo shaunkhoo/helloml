@@ -6,7 +6,11 @@ Simple ML for beginners.
 python>=3.8
 ```
 
-## How to use
+Install dependencies by running:
+```
+pip install -r requirements.txt
+```
 
-Install the package by running:
-``
+## How to Use: Predicting survivors on the Titanic shipwreck
+
+Run `titanic_test.ipynb`.
