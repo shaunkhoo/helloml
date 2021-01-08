@@ -124,7 +124,7 @@ class HelloDataset():
         if scale:
             scaler = RobustScaler()
             num_df = scaler.fit_transform(self.X.select_dtypes(include=[np.number]))
-            self.X = self.X.update(num_df)
+            self.X.update(num_df)
 
 
 # ML models
