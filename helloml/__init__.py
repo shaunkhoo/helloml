@@ -2,7 +2,7 @@ import pandas as pd
 from pandas_profiling import ProfileReport
 from pathlib import Path
 
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import RobustScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -121,8 +121,9 @@ class HelloDataset():
             print(f'- {i}')
 
         if scale:
-            scaler = StandardScaler()
-            self.X = scaler.fit_transform(self.X)
+            scaler = RobustScaler()
+            num_df = scaler.fit_transform(self.X.select_dtypes(include=[np.number]))
+            self.X = self.X.update(num_df)
 
 
 # ML models
