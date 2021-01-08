@@ -1,4 +1,4 @@
 pandas>=1.1.3
 numpy>=1.19.2
 scikit-learn>=0.23.2
-pandas-profiling[notebook]
+https://github.com/pandas-profiling/pandas-profiling/archive/master.zip
