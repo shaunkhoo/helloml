@@ -138,7 +138,7 @@ class HelloModel():
     req_dict = dict(zip(names, [
         ['Requires numerical features',],
         ['Requires numerical features', 'Cannot process missing values'],
-        [],
+        ['Requires numerical features'],
     ]))
 
     def __init__(self, model_name):
