@@ -1,7 +1,0 @@
-README.md
-setup.py
-helloml/__init__.py
-helloml_sideqst.egg-info/PKG-INFO
-helloml_sideqst.egg-info/SOURCES.txt
-helloml_sideqst.egg-info/dependency_links.txt
-helloml_sideqst.egg-info/top_level.txt
