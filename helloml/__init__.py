@@ -1,6 +1,7 @@
 import pandas as pd
-from pandas_profiling import ProfileReport
+import numpy as np
 from pathlib import Path
+from pandas_profiling import ProfileReport
 
 from sklearn.preprocessing import RobustScaler
 from sklearn.linear_model import LogisticRegression
