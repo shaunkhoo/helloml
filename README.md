@@ -11,6 +11,6 @@ Install dependencies by running:
 pip install -r requirements.txt
 ```
 
-## How to Use: Predicting survivors on the Titanic shipwreck
+## How to Use: Predicting survivors on the Titanic shipwreck
 
 Run `titanic_demo.ipynb`.
