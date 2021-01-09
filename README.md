@@ -1,5 +1,5 @@
-# helloml
-Simple ML for beginners.
+# HelloML
+HelloML makes it easy, fast, and intuitive to do Machine Learning (ML).
 
 ## Dependencies
 ```
