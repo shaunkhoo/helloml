@@ -12,7 +12,7 @@ pip install -i https://test.pypi.org/simple/ helloml-sideqst
 ```
 
 ## Documentation
-Full documentation is available at this repository's [wiki](https://github.com/sideqst/helloml/wiki).
+Full documentation is available at [this repository's wiki](https://github.com/sideqst/helloml/wiki).
 
 For any observations on or issues with HelloML, please contact christine@dsaid.gov.sg.
 
