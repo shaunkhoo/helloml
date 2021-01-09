@@ -6,9 +6,19 @@ HelloML makes it easy, fast, and intuitive to do Machine Learning (ML).
 python>=3.8
 ```
 
-Install as a package by running:
+We recommend creating a `conda` environment before installation to avoid package conflicts.
+
+Install HelloML on your machine by running:
 ```
 pip install -i https://test.pypi.org/simple/ helloml-sideqst
+```
+Alternatively, you can clone this repository, navigate to the repository's main directory, and run the following command:
+```
+python setup.py install --user
+```
+You can now use HelloML from any Python script on your machine by importing it:
+```python
+from helloml import HelloDataset, HelloModel
 ```
 
 ## Documentation
