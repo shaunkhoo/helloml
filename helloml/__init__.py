@@ -59,7 +59,9 @@ class HelloDataset():
 
     # def drop_example(self, row):
     #     '''
-    #     Removes the given row.
+    #     Removes the given row. 
+    #     Commented out due to need for better data exploration support for 
+    #     appropriate usage.
     #     '''
     #     self.df = self.df.drop(row, axis=0)
     #     print(f'Example {row} removed.')
@@ -140,15 +142,26 @@ class HelloModel():
         ['Requires numerical features', 'Cannot process missing values'],
         ['Requires numerical features'],
     ]))
+    params_dict = dict(zip(names, [
+        ['None'],
+        ['None'],
+        ['No. of neighbours to consider: before training, run the set_neighbours method to inform the model how many neighbours to consider. Note that test performance is typically worse when this number is less than 2']
+    ]))
 
     def __init__(self, model_name):
         self.name = model_name
         self.model = self.obj_dict[model_name]
         self.requirements = self.req_dict[model_name]
+        self.params = self.params_dict[model_name]
         
-        print(f'Model {self.name} initialised. Requirements for this model:')
+        print(f'Model {self.name} initialised.')
+        print(f'Requirements for this model:')
         for i, req in enumerate(self.requirements):
             print(f'{i+1}. {req}.')
+        print('\n')
+        print(f'Parameters to tune for this model:')
+        for i, param in enumerate(self.params):
+            print(f'{i+1}. {param}.')
 
     def train(self, hellodata):
         print(f'Training model {self.name}...')
@@ -158,3 +171,12 @@ class HelloModel():
     def test(self, hellodata):
         score = self.model.score(hellodata.X, hellodata.Y)
         print(f'Accuracy: {round(score*100, 1)}% of your predictions were correct.')
+
+    def set_neighbours(self, n_neighbours):
+        '''
+        Set the number of neighbours to consider in the K-Nearest Neighbours model.
+        param n_neighbours: integer to use as number of neighbours
+        '''
+        assert isinstance(self.model, KNeighborsClassifier), 'In order to set the number of neighbours, you must use K-Nearest Neighbours as your model.'
+        self.model = KNeighborsClassifier(n_neighbours)
+        print(f'Number of neighbours in {self.name} set to {n_neighbours}.')
