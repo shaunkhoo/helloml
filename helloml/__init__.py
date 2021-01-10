@@ -128,6 +128,37 @@ class HelloDataset():
             num_df = scaler.fit_transform(self.X.select_dtypes(include=[np.number]))
             self.X.update(num_df)
 
+    def impute_missing_values(self, feature_list, imputation_type='auto'):
+        '''
+        Impute missing values in the selected columns of the dataset
+        param feature_list: List of column names (as strings) to impute.
+        param imputation_type: What kind of imputation to use (auto, mode, or mean)
+        '''
+        
+        for feature in feature_list:
+            num_na = sum(self.df[feature].isna())
+            if num_na == 0:
+                print(f'No null values detected in column "{feature}"... skipping to next feature')
+                continue
+            elif imputation_type == 'auto':
+                if (self.df[feature].dtype == 'O' or self.df[feature].dtype == 'str'):
+                    print(f'{num_na} null values detected in column "{feature}"... replacing with the mode')
+                    new_feature = self.df[feature].fillna(self.df[feature].mode()[0])
+                else:
+                    print(f'{num_na} null values detected in column "{feature}"... replacing with mean')
+                    new_feature = self.df[feature].fillna(self.df[feature].mean()[0])
+            elif imputation_type == 'mode':
+                print(f'{num_na} null values detected in column "{feature}"... replacing with the mode')
+                new_feature = self.df[feature].fillna(self.df[feature].mode()[0])
+            elif imputation_type == 'mean' and (self.df[feature].dtype == 'O' or self.df[feature].dtype == 'str'):
+                print(f'Error: Cannot impute mean of a non-numerical feature. Skipping imputation of feature "{feature}"...')
+                continue
+            elif imputation_type == 'mean':
+                print(f'{num_na} null values detected in column "{feature}"... replacing with mean')
+                new_feature = self.df[feature].fillna(self.df[feature].mean()[0])
+            else:
+                raise AssertionError('Error: Incorrect imputation type. Please enter one of the options: "auto", "mean", or "mode" only.')
+            self.df[feature] = new_feature                
 
 # ML models
 class HelloModel():
