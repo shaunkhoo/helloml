@@ -24,6 +24,8 @@ from helloml import HelloDataset, HelloModel
 ## Documentation
 Full documentation is available at [this repository's wiki](https://github.com/sideqst/helloml/wiki).
 
+For help with Python syntax and the dealing with errors, please see `cheatsheets.ipynb`.
+
 For any observations on or issues with HelloML, please contact christine@dsaid.gov.sg.
 
 ## How to Use Demo: Predicting survivors on the Titanic shipwreck
